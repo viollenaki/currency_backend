@@ -9,12 +9,19 @@ class Currency(models.Model):
         self.code = self.code.upper()
         super().save(*args, **kwargs)
     
-    
     def __str__(self):
         return f"({self.code})"
     
     class Meta:
         verbose_name_plural = "Currencies"
+
+class CurrencyAmount(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="currency_amounts")
+    currency = models.ForeignKey(Currency, on_delete=models.CASCADE, related_name="amounts")
+    amount = models.DecimalField(max_digits=15, decimal_places=2, default=0.00)
+
+    def __str__(self):
+        return f"{self.currency.code}: {self.amount} (Added by {self.user.username})"
 
 class Operation(models.Model):
     OPERATION_TYPES = (

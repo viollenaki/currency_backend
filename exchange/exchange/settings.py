@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-t8vz!&fs5l&aulx_=pz)2-5sqv=4p*9y_z1b$0fr11je3p*tkt
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['192.168.51.116']
+ALLOWED_HOSTS = ['192.168.51.116','192.168.158.129','192.168.50.116','192.168.50.114','192.168.51.115','192.168.50.114','192.168.128.129','192.168.50.114']
 
 
 # Application definition
@@ -145,8 +145,7 @@ REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': [
         'rest_framework.permissions.IsAuthenticated',
     ],
-    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
-    'PAGE_SIZE': 10,
+    'DEFAULT_PAGINATION_CLASS': None,  # Disable pagination
 }
 
 # CORS settings
